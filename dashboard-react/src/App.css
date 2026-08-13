@@ -1,0 +1,269 @@
+/* Clean, health-focused light theme */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: #f8f9fa;
+  color: #2c3e50;
+  line-height: 1.5;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+}
+
+/* Status Bar */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #6c757d;
+}
+
+.connection-status.connected {
+  color: #28a745;
+}
+
+.connection-status.connected .status-dot {
+  background: #28a745;
+  animation: pulse 2s infinite;
+}
+
+.connection-status.error {
+  color: #dc3545;
+}
+
+.connection-status.error .status-dot {
+  background: #dc3545;
+}
+
+.last-update {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Alert Banner */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  color: #856404;
+}
+
+.alert-banner.no-finger {
+  background: #e7f3ff;
+  border-color: #b3d9ff;
+  color: #0056b3;
+}
+
+.alert-icon {
+  font-size: 18px;
+}
+
+.alert-text {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Vitals Grid */
+.vitals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 600px) {
+  .vitals-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+  
+  .app {
+    padding: 10px;
+  }
+}
+
+/* Vital Cards */
+.vital-card {
+  background: #fff;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.vital-card.heart-rate {
+  border-left: 4px solid #e74c3c;
+}
+
+.vital-card.oxygen {
+  border-left: 4px solid #3498db;
+}
+
+.vital-card.normal {
+  background: #f8fff9;
+  border-color: #28a745;
+}
+
+.vital-card.warning {
+  background: #fff8f0;
+  border-color: #fd7e14;
+}
+
+.vital-card.danger {
+  background: #fff5f5;
+  border-color: #dc3545;
+}
+
+.vital-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.vital-icon {
+  font-size: 24px;
+}
+
+.vital-icon.beat {
+  animation: heartbeat 0.3s ease-out;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.vital-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.vital-value {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.vital-unit {
+  font-size: 18px;
+  font-weight: 400;
+  color: #6c757d;
+  margin-left: 4px;
+}
+
+.vital-status {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  background: #e9ecef;
+  color: #495057;
+}
+
+.vital-card.normal .vital-status {
+  background: #d4edda;
+  color: #155724;
+}
+
+.vital-card.warning .vital-status {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.vital-card.danger .vital-status {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.vital-range {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+/* Footer */
+.footer-info {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+.device-label {
+  font-size: 12px;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.device-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+}
+
+/* Loading states */
+.vital-card:not(.normal):not(.warning):not(.danger) {
+  opacity: 0.7;
+}
+
+.vital-card:not(.normal):not(.warning):not(.danger) .vital-value {
+  color: #adb5bd;
+}
